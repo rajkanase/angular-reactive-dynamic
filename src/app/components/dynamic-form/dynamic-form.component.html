@@ -1,0 +1,50 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="form" (submit)="onSubmit()">
+                <div class="form-group">
+                    <label>Comm Ref*</label>
+                    <input #commRef class="form-control" formControlName="comm_ref" (blur)="searchFromStorage(commRef.value)">
+                </div>
+                <div class="form-group" *ngIf="showForm">
+                    <label>Registry System</label>
+                    <select class="custom-select" (change)="onAppChange($event)">
+                        <option selected>Open this select menu</option>
+                        <option [value]="item.value" *ngFor="let item of applicationsMenu">{{item.name | titlecase}}
+                        </option>
+                    </select>
+                </div>
+                <div class="d-flex">
+                    <div class="mr-3" *ngFor="let item of apps; let i = index">
+                        <button type="button" class="btn btn-primary mr-1" [ngClass]="{'btn-primary': !item.done, 'btn-success': item.done}" (click)="displayRegistry = i">{{item.name | titlecase}}</button>
+                        <span (click)="removeApplication(i)">x</span>
+                    </div>
+                </div>
+                <div formArrayName="applications">
+                    <div *ngFor="let app of form.controls.applications['controls']; let i=index">
+                        <div [formGroupName]="i" *ngIf="i == displayRegistry">
+                            <div class="form-group">
+                                <label>Report Status({{i}})</label>
+                                <input type="text" class="form-control" formControlName="report_status">
+                            </div>
+                            <div class="form-group">
+                                <label>RAG Status({{i}})</label>
+                                <input type="text" class="form-control" formControlName="rag_status">
+                            </div>
+                            <div class="form-group">
+                                <label>Comments({{i}})</label>
+                                <textarea class="form-control" rows="3" formControlName="comments"></textarea>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-success" (click)="saveRegistry(i)">Save Registry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end" *ngIf="showForm">
+                    <button [disabled]="form.invalid" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

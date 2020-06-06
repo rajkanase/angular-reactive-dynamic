@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <button *ngIf="!editOn" class="btn btn-primary" (click)="editProjectConfigs()">Edit</button>
+    <button *ngIf="editOn" class="btn btn-primary" (click)="addProjectConfigs()">Add</button>
+  </div>
+  <div class="row">
+    <p-table [value]="projectConfigs" dataKey="bld_conf_master" editMode="table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Building Configuration<br />(Master Type)</th>
+          <th>Building Configuration<br />(Project Specific)</th>
+          <th>Quantity</th>
+          <th>Sqm</th>
+          <th>Revenue / Sqm<br />(SAR)</th>
+          <th>Total Sqm</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+        <tr>
+          <td>
+            {{rowData.bld_conf_master}}
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="rowData.bld_conf_project_spec" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.bld_conf_project_spec}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <input *ngIf="colEnable" type="text" [(ngModel)]="rowData.quantity" required>
+            <span *ngIf="!colEnable">{{rowData.quantity}}</span>
+          </td>
+          <td>
+            <input *ngIf="colEnable" type="text" [(ngModel)]="rowData.sqm">
+            <span *ngIf="!colEnable">{{rowData.sqm}}</span>
+          </td>
+          <td>
+            <input *ngIf="colEnable" type="text" [(ngModel)]="rowData.revenue_sqm">
+            <span *ngIf="!colEnable">{{rowData.revenue_sqm}}</span>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="rowData.total">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.total}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <!-- <td style="text-align:center">
+            <p-button *ngIf="!editing" pInitEditableRow icon="fa fa-pencil" (click)="onRowEditInit(rowData)"></p-button>
+            <p-button class="mr-1" *ngIf="editing" pSaveEditableRow icon="fa fa-check" (click)="onRowEditSave(rowData)">
+            </p-button>
+            <p-button *ngIf="editing" pCancelEditableRow icon="fa fa-times" (click)="onRowEditCancel(rowData, ri)">
+            </p-button>
+          </td> -->
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+</div>
