@@ -15,9 +15,11 @@ import { ProjectConfiguratorComponent } from "./components/project-configurator/
 import { ScrollTableComponent } from './components/scroll-table/scroll-table.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { TagInputModule } from 'ngx-chips';
+import { NgxChipsComponent } from './components/ngx-chips/ngx-chips.component';
 
 @NgModule({
-  declarations: [AppComponent, ProjectConfiguratorComponent, ScrollTableComponent, ChartsComponent, DynamicFormComponent],
+  declarations: [AppComponent, ProjectConfiguratorComponent, ScrollTableComponent, ChartsComponent, DynamicFormComponent, NgxChipsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,7 +30,8 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
     TableModule,
     FormsModule,
     DropdownModule,
-    ButtonModule
+    ButtonModule,
+    TagInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

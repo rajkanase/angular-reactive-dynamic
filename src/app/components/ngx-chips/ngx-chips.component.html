@@ -1,0 +1,8 @@
+<div class="container">
+    <tag-input [(ngModel)]='emails' name="emails" #email="ngModel" [errorMessages]="errorMessages"
+        [validators]="validators" [editable]='true' (onTagEdited)="onTagEdited($event)"
+        [separatorKeyCodes]="[32,188,186,13,9]" [placeholder]="'Add email'"
+        [secondaryPlaceholder]="'Enter email address(es)'" [clearOnBlur]="true" [addOnPaste]="true" [addOnBlur]="true"
+        [pasteSplitPattern]="splitPattern" theme='bootstrap' required>
+    </tag-input>
+</div>

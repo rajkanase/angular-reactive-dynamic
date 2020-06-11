@@ -1,0 +1,12 @@
+.force-to-the-bottom {
+    margin-top: 90vh;
+}
+
+/* :host ::ng-deep .ng2-tag-input{
+    pointer-events: none !important;
+} */
+
+:host ::ng-deep .error-message{
+    margin: 50px 0px !important;
+    color: black !important;
+}
