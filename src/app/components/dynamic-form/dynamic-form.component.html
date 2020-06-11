@@ -23,6 +23,9 @@
                 <div formArrayName="applications">
                     <div *ngFor="let app of form.controls.applications['controls']; let i=index">
                         <div [formGroupName]="i" *ngIf="i == displayRegistry">
+                            <div style="background-color: #a7a7a733;" class="my-2 p-2">
+                                Registry - {{apps[i].name | titlecase}}
+                            </div>
                             <div class="form-group">
                                 <label>Report Status({{i}})</label>
                                 <input type="text" class="form-control" formControlName="report_status">

@@ -12,6 +12,7 @@ export class DynamicFormComponent implements OnInit {
   displayRegistry: number = 0;
   formObj: any;
   showForm: boolean = false;
+  registryName: string = '';
   applicationsMenu = [
     { name: 'one', value: 'one', done: false },
     { name: 'two', value: 'two', done: false },
@@ -38,6 +39,7 @@ export class DynamicFormComponent implements OnInit {
   onAppChange(event) {
     const appItem = this.applicationsMenu.find(x => x.value === event.target.value);
     this.apps.push(appItem);
+    this.registryName = event.target.value;
     this.apps = _.uniq(this.apps);
     this.addApplication();
   }
@@ -45,12 +47,14 @@ export class DynamicFormComponent implements OnInit {
   initAppForm(app?) {
     if (app) {
       return this.fb.group({
+        registry_name: [this.registryName],
         report_status: [app.report_status, Validators.required],
         rag_status: [app.rag_status, Validators.required],
         comments: [app.comments, Validators.required]
       });
     } else {
       return this.fb.group({
+        registry_name: [this.registryName],
         report_status: ['', Validators.required],
         rag_status: ['', Validators.required],
         comments: ['', Validators.required]
