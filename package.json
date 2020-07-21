@@ -24,7 +24,7 @@
     "angular-highcharts": "^7.0.2",
     "highcharts": "^7.0.0",
     "list-to-tree": "^2.2.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "ngx-chips": "^2.1.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.2",
