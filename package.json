@@ -22,7 +22,7 @@
     "@angular/router": "~8.2.14",
     "@types/highcharts": "^5.0.36",
     "angular-highcharts": "^7.0.2",
-    "highcharts": "^7.0.0",
+    "highcharts": "^9.0.0",
     "list-to-tree": "^2.2.3",
     "lodash": "^4.17.15",
     "ngx-chips": "^2.1.0",
